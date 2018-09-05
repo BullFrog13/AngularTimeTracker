@@ -1,0 +1,27 @@
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-theme panel-primary">
+        <div class="panel-heading card-panel-heading">Task {{$ctrl.task.Name}} in {{$ctrl.project.Name}} </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div><b>Start date: </b>{{$ctrl.task.StartDate | date : shortdate}}</div>
+                    <br>
+                    <div><b>End date: </b> {{$ctrl.stask.EndDate | date : shortdate}}</div>
+                    <br>
+                    <div><b>Status: </b> {{$ctrl.task.Status.Name}}</div>
+                    <br>
+                    <div><b>Type: </b> {{$ctrl.task.TicketType.Name}}</div>
+                    <br>
+                    <div><b>Estimate: </b> {{$ctrl.task.Estimate}}</div>
+                    <br>
+                    <div><b>Responsible: </b> {{$ctrl.task.Responsible.FullName}}</div>
+                    <br>
+                    <div><b>Reporter: </b> {{$ctrl.task.Reporter.FullName}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            {{$ctrl.task.Description}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+task {
+    .panel-theme {
+        background-color: #FFFFFF;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 1px 2px 6px rgba(0, 0, 0, .2);
+    }
+    .card-panel-heading {
+        background-color: #FFFFFF;
+        border: none;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .panel-title {
+        font-weight: bold;
+    }
+    .panel-footer {
+        background-color: #FFFFFF;
+        border: none;
+        border-top: 1px solid #E0E0E0;
+    }
+    .panel-body {
+        border-bottom: none;
+    }
+    .badge {
+        color: #FFFFFF;
+    }
+}

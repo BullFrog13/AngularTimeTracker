@@ -1,0 +1,16 @@
+
+#VSCODE 
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+#Node modules
+node_modules/
+
+.idea/
+.tmp/
+coverage/
+dist/
+debug.log

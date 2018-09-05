@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title" ng-if="!$ctrl.isCreate">Edit timesheet for {{ $ctrl.taskName }}</h3>
+    <h3 class="modal-title" id="modal-title" ng-if="$ctrl.isCreate">Create timesheet for {{ $ctrl.taskName }}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form name="timesheetForm" class="form-horizontal" ng-submit="timesheetForm.$valid && $ctrl.updateTimesheet(timesheet)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error': timesheetForm.loggedTime.$invalid && (timesheetForm.loggedTime.$touched || timesheetForm.$submitted) }">
+            <label for="loggedTime" class="col-sm-3 control-label">Logged hours</label>
+            <div class="col-sm-2">
+                <input type="number" name="loggedTime" class="form-control text-center" ng-model="$ctrl.timesheet.LoggedTime" ng-value="$ctrl.timesheet.LoggedTime" required />
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': timesheetForm.comment.$invalid && (timesheetForm.v.$touched || timesheetForm.$submitted) }">
+            <label for="comment" class="col-sm-3 control-label">Comment</label>
+            <div class="col-sm-6">
+                <textarea rows="5" name="comment" style="resize: none;" class="form-control" ng-model="$ctrl.timesheet.Comment" ng-value="$ctrl.timesheet.Comment"> </textarea>
+            </div>
+        </div>
+
+        <input type="submit" value="Submit" class="btn btn-primary col-sm-offset-3" />
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

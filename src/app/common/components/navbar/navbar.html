@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <a class="navbar-brand" ui-sref="app">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ui-sref-active-eq="active" ng-show="$ctrl.isAuthenticated"><a ui-sref="app">Home</a></li>
+                <li ui-sref-active-eq="active" ng-show="$ctrl.userIsAdministrator"><a ui-sref=".admin">Admin</a></li>
+                <li ui-sref-active-eq="active" ng-show="$ctrl.isAuthenticated"><a ui-sref=".dashboard">Dashboard</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ui-sref-active-eq="active" ng-show="!$ctrl.isAuthenticated"><a ui-sref="app.registration">Register</a></li>
+                <li ui-sref-active-eq="active" ng-show="!$ctrl.isAuthenticated"><a ui-sref="app.login">Login</a></li>
+                <li ui-sref-active-eq="active" ng-show="$ctrl.isAuthenticated"><a ui-sref="app.profile">Profile</a></li>
+                <li ng-show="$ctrl.isAuthenticated" ng-click="$ctrl.logout()"><a class="logoutLink">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

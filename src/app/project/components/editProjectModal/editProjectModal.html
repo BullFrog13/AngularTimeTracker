@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Edit project {{ $ctrl.project.Name }}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form name="editProjectForm" class="form-horizontal" ng-submit="editProjectForm.$valid && $ctrl.editProject()" novalidate>
+        <div class="form-group" ng-class="{ 'has-error': editProjectForm.name.$invalid && (editProjectForm.name.$touched || editProjectForm.$submitted) }">
+            <label for="name" class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-6">
+                <input type="text" name="name" class="form-control" ng-model="$ctrl.project.Name" required />
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editProjectForm.description.$invalid && (editProjectForm.description.$touched || editProjectForm.$submitted) }">
+            <label for="description" class="col-sm-3 control-label">Description</label>
+            <div class="col-sm-8">
+                <textarea type="text" rows="6" name="description" class="form-control" ng-model="$ctrl.project.Description" required></textarea>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editProjectForm.customerName.$invalid && (editProjectForm.customerName.$touched || editProjectForm.$submitted) }">
+            <label for="customerName" class="col-sm-3 control-label">Customer name</label>
+            <div class="col-sm-6">
+                <input type="text" name="customerName" class="form-control" ng-model="$ctrl.project.CustomerName" required />
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editProjectForm.imageUrl.$invalid && (editProjectForm.ImageUrl.$touched || editProjectForm.$submitted) }">
+            <label for="imageUrl" class="col-sm-3 control-label">Image Url</label>
+            <div class="col-sm-6">
+                <input type="text" name="imageUrl" class="form-control" ng-model="$ctrl.project.ImageUrl" required />
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editProjectForm.startDate.$invalid && (editProjectForm.startDate.$touched || editProjectForm.$submitted) }">
+            <label for="startDate" class="col-sm-3 control-label">Start Date</label>
+            <div class="col-sm-6">
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="$ctrl.project.StartDate" is-open="$ctrl.startDateOpened" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="$ctrl.openStartDate()"><i class="fa fa-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editProjectForm.endDate.$invalid && (editProjectForm.endDate.$touched || editProjectForm.$submitted) }">
+            <label for="endDate" class="col-sm-3 control-label">End Date</label>
+            <div class="col-sm-6">
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="$ctrl.project.EndDate" is-open="$ctrl.endDateOpened" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="$ctrl.openEndDate()"><i class="fa fa-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <input type="submit" value="Submit" class="btn btn-primary col-sm-offset-3" />
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.close()">Cancel</button>
+</div>

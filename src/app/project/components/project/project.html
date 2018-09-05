@@ -1,0 +1,77 @@
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-theme panel-primary">
+        <div class="panel-heading card-panel-heading"> {{$ctrl.project.Name}} </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div><b>Customer: </b>{{$ctrl.project.CustomerName}}</div>
+                    <br>
+                    <div><b>Start date: </b>{{$ctrl.project.StartDate | date : shortdate}}</div>
+                    <br>
+                    <div><b>End date: </b> {{$ctrl.project.EndDate | date : shortdate}}</div>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <img src="http://placehold.it/175x200" alt="Project logo">
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            {{$ctrl.project.Description}}
+        </div>
+        <div class="panel-footer">
+            <a class="btn btn-warning" href="#" ng-click="$ctrl.openEditProjectModal()">Edit</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading teamPanelHeader">
+            <div class="row">
+                <h4 class="panel-title pull-left teamHeaderTitle">Team</h4>
+
+                <div class="btn-group pull-right addMemberButton">
+                    <a href="#" class="btn btn-primary btn" ng-click="$ctrl.openAddMemberModal()">Add member</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr class="teamTableHeadRow">
+                    <td>
+                        <b>Name</b>
+                    </td>
+                    <td>
+                        <b>Position</b>
+                    </td>
+                    <td>
+                        <b>Email</b>
+                    </td>
+                    <td>
+                        <b>Skype</b>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="teamMebmerRow" ng-repeat="member in $ctrl.teamMembers">
+                    <td>
+                        <i class="fa fa-user indianRedTextColor" aria-hidden="true"></i>
+                        <span class="cursorPointer" ui-sref="app.user({ userId: member.Id})">{{ member.FullName }}</span>
+                    </td>
+                    <td>
+                        <span>{{ member.Position.Name }}</span>
+                    </td>
+                    <td>
+                        <span>{{ member.Email }}</span>
+                    </td>
+                    <td>
+                        <span>{{ member.Skype }}</span>
+                    </td>
+                    <td>
+                        <i class="fa fa-times indianRedTextColor cursorPointer" aria-hidden="true" ng-click="$ctrl.deleteMemberFromTeam(member.Id)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

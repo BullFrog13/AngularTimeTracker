@@ -1,0 +1,85 @@
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-theme panel-primary">
+        <div class="panel-heading card-panel-heading"> {{$ctrl.user.FullName}} </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div><b>Birthday: </b>{{$ctrl.user.Birthday | date : shortdate}}</div>
+                    <br>
+                    <div><b>Location: </b>{{ $ctrl.user.Location.Name }}</div>
+                    <br>
+                    <div><b>Address: </b> {{ $ctrl.user.Address }}</div>
+                    <br>
+                    <div><b>Email: </b> {{ $ctrl.user.Email }}</div>
+                    <br>
+                    <div><b>Skype: </b> {{ $ctrl.user.Skype }}</div>
+                    <br>
+                    <div><b>Phone: </b> {{ $ctrl.user.Phone }}</div>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <img src="http://placehold.it/175x200" alt="User image">
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <table class="table table-striped table-bordered table-list">
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Level</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="skill in $ctrl.skills">
+                        <td>{{ skill.Name }}</td>
+                        <td>{{ skill.LevelName }}</td>
+                        <td>
+                            <a class="btn btn-warning" ng-click="$ctrl.openEditSkillModal(skill)">Edit</a>
+                            <a class="btn btn-danger" ng-click="$ctrl.removeSkill(skill.Id)">Remove</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">
+            <a class="btn btn-warning" ng-click="$ctrl.openEditUserModal()">Edit</a>
+            <a class="btn btn-success" ng-click="$ctrl.openNewSkillModal()">Add skill</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading panelHeader">
+            <div class="row">
+                <h4 class="panel-title pull-left panelHeaderTitle">Projects </h4>
+
+                <div class="btn-group pull-right panelHeaderAssignButton">
+                    <a href="#" class="btn btn-primary btn" ng-click="$ctrl.openAssignToProjectModal()">Assign</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <tbody ng-init="hideContent=false;" ng-repeat-start="project in $ctrl.projects">
+                <tr class="projectRow" ng-click="hideContent=!hideContent;">
+                    <td>
+                        <b class="cursorPointer" ui-sref="app.project({ projectId: project.Id})">{{ project.Name }}</b>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tbody ng-repeat-end ng-show="hideContent">
+                <tr ng-repeat="task in project.Tickets">
+                    <td>
+                        <i class="fa fa-dot-circle-o indianRedColor" aria-hidden="true"></i>
+                        <span class="cursorPointer steelBlueColor">{{ task.Name }}</span>
+                    </td>
+                    <td>
+                        <span>{{ task.Description }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

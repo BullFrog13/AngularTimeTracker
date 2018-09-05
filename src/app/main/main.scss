@@ -1,0 +1,43 @@
+main {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .boardHeadRow {
+        background-color: #eeeeee;
+    }
+    .boardTitle {
+        color: gray;
+    }
+    .boardDateArrow {
+        font-size: 19px;
+    }
+    .projectTitleRow {
+        color: steelblue;
+        background-color: whitesmoke;
+    }
+    .projectTitle {
+        cursor: pointer;
+    }
+    .taskImage {
+        color: indianred;
+    }
+    .taskName {
+        cursor: pointer;
+        color: steelblue
+    }
+    .timesheetInput {
+        text-align: center;
+        height: 20px;
+        width: 40px;
+        padding: 0 0 0 0
+    }
+    .timesheetModalButton {
+        margin-left: 3px;
+    }
+    .timesheetModalButtonImage {
+        color: gray;
+        margin-top: 3px;
+    }
+}

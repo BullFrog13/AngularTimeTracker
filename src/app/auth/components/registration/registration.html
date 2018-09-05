@@ -1,0 +1,124 @@
+<h1>Registration</h1>
+
+<form name="registrationForm" class="form-horizontal" ng-submit="registrationForm.$valid && $ctrl.register(employee)" novalidate>
+    <div class="form-group" ng-class="{ 'has-error': registrationForm.firstName.$invalid && (registrationForm.firstName.$touched || registrationForm.$submitted) }">
+        <label for="firstName" class="col-sm-3 control-label">First Name</label>
+        <div class="col-sm-6">
+            <input type="text" id="firstName" name="firstName" class="form-control" ng-model="employee.First" required ng-minlength="2" />
+            <div class="help-block" ng-messages="registrationForm.firstName.$error" ng-show="registrationForm.firstName.$touched || registrationForm.$submitted">
+                <p ng-message="minlength">Your name should be at least 2 characters long.</p>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': registrationForm.lastName.$invalid && (registrationForm.lastName.$touched || registrationForm.$submitted) }">
+        <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+        <div class="col-sm-6">
+            <input type="text" id="lastName" name="lastName" class="form-control" ng-model="employee.Last" required ng-minlength="2" />
+            <div class="help-block" ng-messages="registrationForm.lastName.$error" ng-show="registrationForm.lastName.$touched || registrationForm.$submitted ">
+                <p ng-message="minlength">Your last name should be at least 2 characters long.</p>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': registrationForm.email.$invalid && (registrationForm.email.$touched || registrationForm.$submitted) }">
+        <label for="email" class="col-sm-3 control-label">Email</label>
+        <div class="col-sm-6">
+            <input type="email" id="email" name="email" class="form-control" ng-model="employee.Email" required />
+            <div class="help-block" ng-messages="registrationForm.email.$error" ng-show="registrationForm.email.$touched || registrationForm.$submitted ">
+                <p ng-message="email">Email is invalid.</p>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': registrationForm.locationId.$invalid && (registrationForm.locationId.$touched || registrationForm.$submitted) }">
+        <label for="locationId" class="col-sm-3 control-label">Location</label>
+        <div class="col-sm-6">
+            <select class="form-control" id="locationId" name="locationId" ng-model="employee.LocationId" required>
+                    <option value="">-- Select employee location --</option>
+                    <option ng-repeat="location in $ctrl.locations" value="{{location.Id}}">{{location.Name}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': registrationForm.birthDate.$invalid && (registrationForm.birthDate.$touched || registrationForm.$submitted) }">
+        <label for="birthDate" class="col-sm-3 control-label">Birth Date</label>
+        <div class="col-sm-2">
+            <input type="date" id="BirthDate" name="birthDate" class="form-control" ng-model="employee.Birthday" required />
+            <div class="help-block" ng-messages="registrationForm.birthDate.$error" ng-show="registrationForm.birthDate.$touched || registrationForm.$submitted">
+                <p ng-message="date">Birth date is invalid.</p>
+            </div>
+        </div>
+        <div class="col-sm-7"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="address" class="col-sm-3 control-label">Address</label>
+        <div class="col-sm-6">
+            <input type="text" id="address" name="address" class="form-control" ng-model="employee.Address" />
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="skype" class="col-sm-3 control-label">Skype</label>
+        <div class="col-sm-6">
+            <input type="text" id="skype" name="skype" class="form-control" ng-model="employee.Skype" />
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="phone" class="col-sm-3 control-label">Phone Number</label>
+        <div class="col-sm-6">
+            <input type="number" id="phone" name="phone" class="form-control" ng-model="employee.Phone" />
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="imageUrl" class="col-sm-3 control-label">Image Url</label>
+        <div class="col-sm-6">
+            <input type="text" id="imageUrl" class="form-control" ng-model="employee.ImageUrl" />
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': registrationForm.positionId.$invalid && (registrationForm.positionId.$touched || registrationForm.$submitted) }">
+        <label for="positionId" class="col-sm-3 control-label">Position</label>
+        <div class="col-sm-6">
+            <select class="form-control" id="positionId" name="positionId" ng-model="employee.PositionId" required>
+                        <option value="">-- Select employee position --</option>
+                        <option ng-repeat="position in $ctrl.positions" value="{{position.Id}}">{{position.Name}}</option>
+                </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': registrationForm.password.$invalid && (registrationForm.password.$touched || registrationForm.$submitted) }">
+        <label for="password" class="col-sm-3 control-label">Password</label>
+        <div class="col-sm-6">
+            <input type="password" id="password" name="password" class="form-control" ng-model="employee.Password" ng-minlength="5" required />
+            <div class="help-block" ng-messages="registrationForm.password.$error" ng-show="registrationForm.password.$touched || registrationForm.$submitted">
+                <p ng-message="minlength">Your password is too short</p>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': registrationForm.confirmPassword.$invalid && (registrationForm.confirmPassword.$touched || registrationForm.$submitted) }">
+        <label for="confirmPassword" class="col-sm-3 control-label">Confirm Password</label>
+        <div class="col-sm-6">
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" ng-model="employee.ConfirmPassword" compare-to="registrationForm.password" required />
+            <div class="help-block" ng-messages="registrationForm.confirmPassword.$error" ng-show="registrationForm.confirmPassword.$touched || registrationForm.$submitted">
+                <p ng-message="required">Confirm your password.</p>
+                <p ng-message="compareTo">Passwords do not match.</p>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <input type="submit" value="Register" class="btn btn-primary col-sm-offset-3" />
+</form>

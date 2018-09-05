@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Create ticket in {{ $ctrl.project.Name }}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form name="taskForm" class="form-horizontal" ng-submit="taskForm.$valid && $ctrl.editTask()" novalidate>
+        <div class="form-group" ng-class="{ 'has-error': taskForm.loggedTime.$invalid && (taskForm.name.$touched || taskForm.$submitted) }">
+            <label for="name" class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-6">
+                <input type="text" name="name" class="form-control" ng-model="$ctrl.task.Name" required />
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': taskForm.description.$invalid && (taskForm.description.$touched || taskForm.$submitted) }">
+            <label for="description" class="col-sm-3 control-label">Description</label>
+            <div class="col-sm-6">
+                <input type="text" name="description" class="form-control" ng-model="$ctrl.task.Description" required/>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': taskForm.estimate.$invalid && (taskForm.estimate.$touched || taskForm.$submitted) }">
+            <label for="estimate" class="col-sm-3 control-label">Estimate</label>
+            <div class="col-sm-2">
+                <input type="number" name="estimate" class="form-control text-center" ng-model="$ctrl.task.Estimate" />
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': taskForm.responsible.$invalid && (taskForm.responsible.$touched || taskForm.$submitted) }">
+            <label for="responsible" class="col-sm-3 control-label">Responsible</label>
+            <div class="col-sm-6">
+                <input autocomplete="off" name="responsible" typeahead-editable="false" required type="text" ng-model="$ctrl.task.Responsible" placeholder="Responsible for ticket" uib-typeahead="user as user.FullName for user in $ctrl.getUsers($viewValue)" typeahead-loading="loadingResponsible"
+                    typeahead-no-results="noResults1" class="form-control">
+                <i ng-show="loadingResponsible" class="glyphicon glyphicon-refresh"></i>
+                <div ng-show="noResults1">
+                    <i class="glyphicon glyphicon-remove"></i> No Results Found
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': taskForm.type.$invalid && (taskForm.type.$touched || taskForm.$submitted) }">
+            <label for="type" class="col-sm-3 control-label">Type</label>
+            <div class="col-sm-6">
+                <select class="form-control" name="type" ng-model="$ctrl.task.TicketType" ng-options="type.Name for type in $ctrl.ticketTypes track by type.Id" required></select>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': taskForm.reporter.$invalid && (taskForm.reporter.$touched || taskForm.$submitted) }">
+            <label for="reporter" class="col-sm-3 control-label">Reporter</label>
+            <div class="col-sm-6">
+                <input autocomplete="off" name="reporter" required type="text" typeahead-editable="false" ng-model="$ctrl.task.Reporter" placeholder="Report to" uib-typeahead="user as user.FullName for user in $ctrl.getUsers($viewValue)" typeahead-loading="loadingReporter"
+                    typeahead-no-results="noResults2" class="form-control">
+                <i ng-show="loadingReporter" class="glyphicon glyphicon-refresh"></i>
+                <div ng-show="noResults2">
+                    <i class="glyphicon glyphicon-remove"></i> No Results Found
+                </div>
+            </div>
+        </div>
+
+        <input type="submit" value="Submit" class="btn btn-primary col-sm-offset-3" />
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.close()">Cancel</button>
+</div>

@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Edit user {{ $ctrl.user.FullName }}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form name="editUserForm" class="form-horizontal" ng-submit="editUserForm.$valid && $ctrl.editUser()" novalidate>
+        <div class="form-group" ng-class="{ 'has-error': editUserForm.first.$invalid && (editUserForm.first.$touched || editUserForm.$submitted) }">
+            <label for="first" class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-6">
+                <input type="text" name="first" class="form-control" ng-model="$ctrl.user.First" required />
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editUserForm.last.$invalid && (editUserForm.last.$touched || editUserForm.$submitted) }">
+            <label for="last" class="col-sm-3 control-label">Second Name</label>
+            <div class="col-sm-6">
+                <input type="text" name="last" class="form-control" ng-model="$ctrl.user.Last" required/>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editUserForm.birthday.$invalid && (editUserForm.birthday.$touched || editUserForm.$submitted) }">
+            <label for="birthday" class="col-sm-3 control-label">Start Date</label>
+            <div class="col-sm-6">
+                <p class="input-group">
+                    <input type="text" class="form-control" name="birthday" uib-datepicker-popup="dd.MM.yyyy" ng-model="$ctrl.user.Birthday" is-open="$ctrl.birthdayOpen" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="$ctrl.openBirthdayDatePicker()"><i class="fa fa-calendar"></i></button>
+                        </span>
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editUserForm.location.$invalid && (editUserForm.location.$touched || editUserForm.$submitted) }">
+            <label for="location" class="col-sm-3 control-label">Location</label>
+            <div class="col-sm-6">
+                <select class="form-control" name="location" ng-model="$ctrl.user.Location" ng-options="location.Name for location in $ctrl.locations track by location.Id" required></select>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editUserForm.address.$invalid && (editUserForm.address.$touched || editUserForm.$submitted) }">
+            <label for="address" class="col-sm-3 control-label">Address</label>
+            <div class="col-sm-6">
+                <input type="text" name="address" class="form-control" ng-model="$ctrl.user.Address" />
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': editUserForm.email.$invalid && (editUserForm.email.$touched || editUserForm.$submitted) }">
+            <label for="email" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-6">
+                <input type="email" name="email" class="form-control" ng-model="$ctrl.user.Email" />
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': editUserForm.skype.$invalid && (editUserForm.skype.$touched || editUserForm.$submitted) }">
+            <label for="skype" class="col-sm-3 control-label">Skype</label>
+            <div class="col-sm-6">
+                <input type="text" name="skype" class="form-control" ng-model="$ctrl.user.Skype" />
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': editUserForm.phone.$invalid && (editUserForm.phone.$touched || editUserForm.$submitted) }">
+            <label for="phone" class="col-sm-3 control-label">Phone</label>
+            <div class="col-sm-6">
+                <input type="text" name="phone" class="form-control" ng-model="$ctrl.user.Phone" />
+            </div>
+        </div>
+
+        <input type="submit" value="Submit" class="btn btn-primary col-sm-offset-3" />
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.close()">Cancel</button>
+</div>

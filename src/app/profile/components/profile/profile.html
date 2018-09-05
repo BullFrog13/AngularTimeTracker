@@ -1,0 +1,27 @@
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-theme panel-primary">
+        <div class="panel-heading card-panel-heading"> {{ $ctrl.User.First }} {{ $ctrl.User.Last }}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div><b>Email: </b>{{$ctrl.User.Email}}</div>
+                    <br>
+                    <div><b>Birthday: </b>{{ $ctrl.User.Birthday | date:'yyyy-MM-dd'}}</div>
+                    <br>
+                    <div><b>Address: </b>{{ $ctrl.User.Address}}</div>
+                    <br>
+                    <div><b>Skype: </b> {{ $ctrl.User.Skype}}</div>
+                    <br>
+                    <div><b>Phone: </b>{{ $ctrl.User.Phone}}</div>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <img src="http://placehold.it/175x200" alt="Project logo">
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div><b>Location: </b>{{ $ctrl.User.Location.Name }}</div>
+            <div><b>Position: </b>{{ $ctrl.User.Position.Name }}</div>
+        </div>
+    </div>
+</div>

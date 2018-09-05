@@ -1,0 +1,75 @@
+<div class="col-xs-12" ng-if="$ctrl.projects.length === 0">
+    You do not have any projects
+</div>
+<div ng-if="$ctrl.projects.length !== 0">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="positionId" class="col-sm-1 control-label">Project</label>
+            <div class="col-sm-2">
+                <select ng-model="$ctrl.selectedProject" ng-change="$ctrl.switchProject()" class="form-control" id="positionId" data-ng-options="project as project.Name for project in $ctrl.projects">
+            <option>{{ project.Name }}</option>
+        </select>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-primary" ng-click="$ctrl.openCreateTaskModal()">New ticket</a>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-primary" ui-sref="app.project({ projectId: $ctrl.selectedProject.Id})">Project Info</a>
+            </div>
+        </div>
+    </form>
+
+    <div class="row aligned-row">
+        <div class='col-sm-2 statusColumn' ng-repeat="status in $ctrl.ticketStatuses">
+            <div class="statusColumnHeader">
+                <b>{{status.Name}}</b>
+            </div>
+            <div class="dragularColumn" status-id="{{status.Id}}" dragula='"another-bag"' dragula-model='$ctrl[status.Abbr]'>
+                <div ticket-id="{{ticket.Id}}" ticket="{{ticket}}" ng-repeat='ticket in $ctrl[status.Abbr]' class="row">
+                    <div class="col-sm-offset-1 col-sm-10 ">
+                        <div class="thumbnail">
+                            <div class="caption ">
+                                <div class="row">
+                                    <div class="col-sm-8" ng-bind='ticket.Name'></div>
+                                    <div class="col-sm-1">
+                                        <div class="btn-group" uib-dropdown>
+                                            <button id="single-button" type="button" class="btn btn-primary btn-xs" uib-dropdown-toggle>
+                                            <span class="caret"></span>
+                                        </button>
+                                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                                <li role="menuitem">
+                                                    <a ng-click="$ctrl.openEditTaskModal(ticket)">
+                                                    Edit
+                                                </a>
+                                                </li>
+                                                <li role="menuitem" ng-click="$ctrl.deleteTask(ticket)"><a href="#">Delete</a></li>
+                                                <li class="divider"></li>
+                                                <li role="menuitem"><a ui-sref="app.task({ taskId: ticket.Id})">Ticket Info</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="ticketSplitter">
+                                <div ng-bind='ticket.Description'></div>
+
+                                <div class="row ticketBottomPanel">
+                                    <div class="col-sm-1 text-left ticketTypeImage" ng-switch on="ticket.TypeId">
+                                        <i ng-switch-when="1" class="fa fa-cogs" aria-hidden="true" uib-tooltip="Technical task" tooltip-placement="top-right"></i>
+                                        <i ng-switch-when="2" class="fa fa-bug" aria-hidden="true" uib-tooltip="Bug"></i>
+                                        <i ng-switch-when="3" class="fa fa-long-arrow-up" aria-hidden="true" uib-tooltip="Improvement"></i>
+                                        <i ng-switch-when="4" class="fa fa-plus" aria-hidden="true" uib-tooltip="New Feature"></i>
+                                        <i ng-switch-when="5" class="fa fa-dot-circle-o" aria-hidden="true" uib-tooltip="Task"></i>
+                                    </div>
+                                    <div class="col-sm-2 text-center">
+                                        <span class="badge text-center" uib-tooltip="Unestimated" tooltip-placement="top-right" ng-if="ticket.Estimate === 0">-</span>
+                                        <span class="badge text-center" uib-tooltip="{{ticket.Estimate}} story points" tooltip-placement="top-right" ng-if="ticket.Estimate !== 0">{{ticket.Estimate}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

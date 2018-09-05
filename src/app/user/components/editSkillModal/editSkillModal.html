@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Skill modal {{ $ctrl.project.Name }}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form name="editSkillForm" class="form-horizontal" ng-submit="editSkillForm.$valid && $ctrl.updateSkillLevel()" novalidate>
+        <div class="form-group" ng-class="{ 'has-error': editSkillForm.name.$invalid && (editSkillForm.name.$touched || editSkillForm.$submitted) }">
+            <label for="level" class="col-sm-3 control-label">Level</label>
+            <div class="col-sm-6">
+                <select class="form-control" name="level" ng-model="$ctrl.selectedSkillLevel" ng-options="level.Name for level in $ctrl.levels track by level.Id" required>
+                </select>
+            </div>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary col-sm-offset-3" />
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.close()">Cancel</button>
+</div>
